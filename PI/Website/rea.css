@@ -1,0 +1,96 @@
+/* Estilos globales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8d3e0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+  }
+  
+  /* Contenedor principal */
+  .container {
+    width: 100%;
+    max-width: 500px;
+    background-color: #fff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Encabezado */
+  header img {
+    max-width: 150px;
+    margin-bottom: 15px;
+  }
+  
+  h1 {
+    color: #76606c;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    color: #333;
+  }
+  
+  /* Formulario */
+  .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  /* Botones */
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:first-child {
+    background-color: #ccc;
+    color: #333;
+  }
+  
+  button:first-child:hover {
+    background-color: #bbb;
+  }
+  
+  button:last-child {
+    background-color: #a0ddd8;
+    color: #000;
+  }
+  
+  button:last-child:hover {
+    background-color: #81c7bb;
+  }

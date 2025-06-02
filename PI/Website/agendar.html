@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenda tu Cita</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <main>
+    <section class="appointment">
+      <img src="imagenes/Logo.png" alt="Logo Salud Materna Juvenil">
+      <h1>Agenda tu cita</h1>
+      <p>Prioriza tu bienestar y el de tu bebé</p>
+      <form id="citaForm">
+        <div>
+          <label for="nombre">Nombre(s):</label>
+          <input type="text" id="nombre" placeholder="Nombre(s)" required>
+        </div>
+        <div>
+          <label for="paterno">Apellido Paterno:</label>
+          <input type="text" id="paterno" placeholder="Primer Apellido" required>
+        </div>
+        <div>
+          <label for="materno">Apellido Materno:</label>
+          <input type="text" id="materno" placeholder="Segundo Apellido" required>
+        </div>
+        <div>
+          <label for="especialista">Selecciona al especialista:</label>
+          <select id="especialista" required>
+            <option value="" disabled selected>Seleccione...</option>
+            <option value="Dr. Rodrigo Betancourt - Ginecología y Obstetricia"> Dr. Rodrigo Betancourt - Ginecología y Obstetricia </option>
+            <option value="Dra. Angelica Resenediz - Ginecología, Obstetricia y Perinatología"> Dra. Angelica Resenediz - Ginecología, Obstetricia y Perinatología </option>
+            <option value="Dr. Damián Gutierrez - Ginecología y Neonatología"> Dr. Damián Gutierrez - Ginecología y Neonatología</option>
+            <option value="Dra. Susana Moscoso - Ginecología y Consultora de Lactancia"> Dra. Susana Moscoso - Ginecología y Consultora de Lactancia </option>
+          </select>
+        </div>
+        <div>
+          <label for="modalidad">Modalidad de la cita:</label>
+          <select id="modalidad" required>
+            <option value="" disabled selected>Selecciona modalidad...</option>
+            <option value="presencial">Presencial</option>
+            <option value="en_linea">En línea</option>
+          </select>
+        </div>
+        <div>
+          <label for="fecha">Fecha:</label>
+          <input type="date" id="fecha" required>
+        </div>
+        <div>
+          <label for="hora">Hora:</label>
+          <input type="time" id="hora" required>
+        </div>
+        <div>
+          <label for="comentarios">Motivo / Comentarios:</label>
+          <textarea id="comentarios" placeholder="Comentarios ..." rows="4"></textarea>
+        </div>
+        <div class="buttons">
+          <a href="agendar_citas.html" class="back-link">Volver a Citas</a>
+          <button type="button" onclick="limpiarFormulario()">Cancelar</button>
+          <button type="button" onclick="guardarCita()">Agendar</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

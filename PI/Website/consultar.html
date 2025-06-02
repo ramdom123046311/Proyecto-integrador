@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta tu Cita</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="appointment">
+      <img src="imagenes/Logo.png" alt="Logo Salud Materna">
+      <h1>Consulta tu Cita</h1>
+      <p>Prioriza tu bienestar y consulta los detalles de tu cita ingresando tus datos.</p>
+      <form id="buscarCitaForm">
+        <div>
+          <label for="nombreBusqueda">Nombre(s):</label>
+          <input type="text" id="nombreBusqueda" placeholder="Nombre(s)" required>
+        </div>
+        <div>
+          <label for="paternoBusqueda">Apellido Paterno:</label>
+          <input type="text" id="paternoBusqueda" placeholder="Primer Apellido" required>
+        </div>
+        <div>
+          <label for="maternoBusqueda">Apellido Materno:</label>
+          <input type="text" id="maternoBusqueda" placeholder="Segundo Apellido" required>
+        </div>
+        <div>
+          <label for="folioBusqueda">Folio:</label>
+          <input type="text" id="folioBusqueda" placeholder="Ingresa tu folio" required>
+        </div>
+        <div class="buttons">
+          <a href="agendar_citas.html" class="back-link">Volver a Citas</a>
+          <button type="button" onclick="limpiarFormulario()">Cancelar</button>
+          <button type="button" onclick="buscarCita()">Consultar</button>
+        </div>
+      </form>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

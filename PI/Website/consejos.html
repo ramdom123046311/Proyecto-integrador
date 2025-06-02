@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consejos y Cuidados</title>
+    <link rel="stylesheet" href="cuid.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="advice-header">
+            <img src="imagenes/Logo.png" alt="Salud Materna" class="logo">
+        </div>
+        <nav>
+            <div class="menu-icon" id="menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul id="nav-menu">
+                <li><a href="index.html"><i class="fas fa-home"></i></a></li>
+                <li><a href="especialistas.html">Especialistas</a></li>
+                <li><a href="datos.html">Datos</a></li>
+                <li><a href="quienes.html">¿Quiénes somos?</a></li>
+                <li><a href="agendar_citas.html">Citas</a></li>
+                <li><a href="perfil.html" class="search-icon"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="advice">
+            <h1>Consejos y Cuidados</h1>
+            <p>Durante el embarazo, el parto y el puerperio, es fundamental cuidar tanto de la madre como del bebé. A continuación, encontrarás recomendaciones prácticas para cada etapa:</p>
+            
+            <div class="section">
+                <h2>Embarazo:</h2>
+                <ul>
+                    <li><b>Monitoreo del bienestar materno y fetal:</b> Realiza visitas regulares al médico para controlar la salud de la madre y el bebé.</li>
+                    <li><b>Nutrición y ejercicio:</b> Mantén una dieta equilibrada y realiza actividad física moderada. Se recomienda realizar algún plan dependiendo tus características.</li>
+                    <li><b>Evita el sobrepeso:</b> Controla tu peso para prevenir complicaciones.</li>
+                    <li><b>Descansa abundantemente:</b> Duerme lo suficiente y evita el estrés.</li>
+                </ul>
+                <img src="imagenes/cuiemb.png" alt="Embarazo" class="illustration-right">
+            </div>
+
+            <div class="section">
+                <h2>Parto:</h2>
+                <ul>
+                    <li><b>Atención respetuosa de la maternidad:</b> Busca un entorno de apoyo y comprensión durante el trabajo de parto.</li>
+                    <li><b>Acompañamiento:</b> Considera tener a alguien de confianza contigo durante el proceso.</li>
+                    <li><b>Alivio del dolor:</b> Explora opciones como la epidural (es un tipo de anestesia que consigue el alivio del dolor en una zona localizada) o consulta algunas técnicas de relajación como: respiración profunda, respiración en cuenta regresiva o algún otro método.</li>
+                    <li><b>Toma de decisiones compartida:</b> Consulta con tu médico las opciones disponibles para tu parto y compara con el para que sea lo más recomendable y sano para ti y tu bebé.</li>
+                </ul>
+                <img src="imagenes/cuipar.png" alt="Parto" class="illustration-left">
+            </div>
+
+            <div class="section">
+                <h2>Puerperio:</h2>
+                <ul>
+                    <li><b>Cuidado de las mamas:</b> Si estás amamantando, solicita ayuda para aprender una buena técnica de lactancia. Aplica calor antes de cada toma si tus mamas están doloridas o agrietadas.</li>
+                    <li><b>Apoyo emocional:</b> Habla con familiares o profesionales si necesitas apoyo emocional. Es normal tener algún tipo de problema, como depresión posparto o algo similar, por ello es muy importante esta parte.</li>
+                    <li><b>Recuperación física:</b> Descansa, hidrátate y sigue las indicaciones médicas.</li>
+                </ul>
+                <img src="imagenes/cuipue.png" alt="Puerperio" class="illustration-right">
+            </div>
+
+            <p>Recuerda que cada mujer es diferente, así que consulta siempre con un médico, recuerda que contamos con colaboradores especialistas en la salud materna, acerca de ellos y podrán apoyarte con recomendaciones personalizadas. ¡Cuida de ti misma y de tu salud!</p>
+        </section>
+    </main>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const menuIcon = document.getElementById('menu-icon');
+    const navMenu = document.getElementById('nav-menu');
+
+    menuIcon.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+    });
+});
+    </script>
+</body>
+</html>
+
