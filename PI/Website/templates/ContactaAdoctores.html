@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactar Especialista</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/espec.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='imagenes/Logo.png') }}" alt="Logo">
+        </div>
+        <nav>
+            <div class="menu-icon" id="menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul id="nav-menu">
+                <li><a href="{{ url_for('index') }}"><i class="fas fa-home"></i></a></li>
+                <li><a href="{{ url_for('consejos') }}">Consejos</a></li>
+                <li><a href="{{ url_for('datos') }}">Datos</a></li>
+                <li><a href="{{ url_for('quienes') }}">¿Quiénes somos?</a></li>
+                <li><a href="{{ url_for('agendar') }}">Citas</a></li>
+                <li><a href="{{ url_for('perfil') }}" class="search-icon"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contact-container">
+        <section class="doctor-info">
+            <img src="{{ url_for('static', filename=doctor.image) }}" alt="{{ doctor.name }}" class="doctor-image">
+            <div class="doctor-details">
+                <h2>{{ doctor.name }}</h2>
+                <div class="contact-methods">
+                    {% if doctor.twitter %}
+                    <p><i class="fab fa-twitter"></i> {{ doctor.twitter }}</p>
+                    {% endif %}
+                    {% if doctor.phone %}
+                    <p><i class="fas fa-phone"></i> {{ doctor.phone }}</p>
+                    {% endif %}
+                    {% if doctor.email %}
+                    <p><i class="fas fa-envelope"></i> {{ doctor.email }}</p>
+                    {% endif %}
+                    {% if doctor.address %}
+                    <p><i class="fas fa-map-marker-alt"></i> {{ doctor.address }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-form">
+            <h2>Formulario de Contacto</h2>
+            <form action="{{ url_for('submit_contact') }}" method="POST">
+                <input type="hidden" name="doctor_id" value="{{ doctor.id }}">
+                
+                <div class="form-group">
+                    <label for="name">Nombre(s):</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="lastname">Apellidos:</label>
+                    <input type="text" id="lastname" name="lastname" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Confirma tu email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="symptoms">Síntomas o Comentarios:</label>
+                    <textarea id="symptoms" name="symptoms" rows="4" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

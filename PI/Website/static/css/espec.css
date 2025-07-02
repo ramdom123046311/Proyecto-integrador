@@ -224,4 +224,137 @@ i {
         margin-top: 10px;
     }
 }
+/* Estilos para el formulario de contacto en ContactaAdoctores.html */
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.doctor-info {
+    flex: 1;
+    min-width: 300px;
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.doctor-image {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.doctor-details h2 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.contact-methods {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.contact-methods p {
+    margin: 0.5rem 0;
+    color: #34495e;
+    display: flex;
+    align-items: center;
+}
+
+.contact-methods i {
+    margin-right: 10px;
+    color: #3498db;
+    width: 20px;
+    text-align: center;
+}
+
+.contact-form {
+    flex: 2;
+    min-width: 300px;
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.contact-form h2 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #34495e;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.submit-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+.submit-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+    }
+    
+    .doctor-info, .contact-form {
+        flex: none;
+        width: 100%;
+    }
+}
 

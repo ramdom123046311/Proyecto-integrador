@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salud Materna</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/citas.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="header-logo">
+      <img src="{{ url_for('static', filename='imagenes/Logo.png') }}" alt="Logo Salud Materna">
+    </div>
+    <nav>
+     
+      <ul id="nav-menu">
+        <li><a href="{{ url_for('index') }}"><i class="fas fa-home"></i></a></li>
+        <li><a href="{{ url_for('especialistas') }}">Especialistas</a></li>
+        <li><a href="{{ url_for('consejos') }}">Consejos</a></li>
+        <li><a href="{{ url_for('datos') }}">Datos</a></li>
+        <li><a href="{{ url_for('quienes') }}">¿Quiénes somos?</a></li>
+        <li><a href="{{ url_for('perfil') }}" class="search-icon"><i class="fas fa-user"></i></a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <div class="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{{ url_for('static', filename='imagenes/carrusel1.png') }}" alt="Imagen 1">
+        </div>
+        <div class="carousel-item">
+          <img src="{{ url_for('static', filename='imagenes/carrusel2.png') }}" alt="Imagen 2">
+        </div>
+        <div class="carousel-item">
+          <img src="{{ url_for('static', filename='imagenes/carrusel3.png') }}" alt="Imagen 3">
+        </div>
+      </div>
+      <button class="carousel-control prev">❮</button>
+      <button class="carousel-control next">❯</button>
+    </div>
+
+    <section class="appointment">
+      <h1>Agenda tu cita con facilidad</h1>
+      <p>Tu bienestar es nuestra prioridad, y queremos hacer que el acceso a atención de calidad sea lo más cómodo posible. ¡Reserva tu cita y da el primer paso hacia una salud materna óptima!</p>
+      <div class="appointment-options">
+        <div class="option1">
+          <img src="{{ url_for('static', filename='imagenes/agendar.png') }}" alt="Icono agendar">
+          <p>Agendar Cita</p>
+          <a href="{{ url_for('agendar') }}"><button>Ingresar</button></a>
+        </div>
+        <div class="option2">
+          <img src="{{ url_for('static', filename='imagenes/consultar.png') }}" alt="Icono consultar">
+          <p>Consultar Cita</p>
+          <a href="{{ url_for('consultar') }}"><button>Ingresar</button></a>
+        </div>
+        <div class="option2">
+          <img src="{{ url_for('static', filename='imagenes/reagendar.png') }}" alt="Icono reagendar">
+          <p>Reagendar Cita</p>
+          <a href="{{ url_for('reagendar') }}"><button>Ingresar</button></a>
+        </div>
+        <div class="option1">
+          <img src="{{ url_for('static', filename='imagenes/cancelar.png') }}" alt="Icono cancelar">
+          <p>Cancelar Cita</p>
+          <a href="{{ url_for('cancelar') }}"><button>Ingresar</button></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/citas.js') }}"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuIcon = document.getElementById('menu-icon');
+      const navMenu = document.getElementById('nav-menu');
+
+      menuIcon.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+      });
+
+      // Carousel functionality
+      const carousel = document.querySelector('.carousel');
+      const inner = document.querySelector('.carousel-inner');
+      const items = document.querySelectorAll('.carousel-item');
+      const prevBtn = document.querySelector('.prev');
+      const nextBtn = document.querySelector('.next');
+      
+      let currentIndex = 0;
+      const totalItems = items.length;
+
+      function updateCarousel() {
+        inner.style.transform = `translateX(-${currentIndex * 100}%)`;
+      }
+
+      nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % totalItems;
+        updateCarousel();
+      });
+
+      prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+        updateCarousel();
+      });
+
+      // Auto-rotate carousel every 5 seconds
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % totalItems;
+        updateCarousel();
+      }, 5000);
+    });
+  </script>
+</body>
+</html>
+</html>

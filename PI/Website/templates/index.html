@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salud Materna</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='imagenes/Logo.png') }}" alt="Logo">
+        </div>
+        <nav>
+            <div class="menu-icon" id="menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul id="nav-menu">
+                <li><a href="{{ url_for('especialistas') }}">Especialistas</a></li>
+                <li><a href="{{ url_for('consejos') }}">Consejos</a></li>
+                <li><a href="{{ url_for('datos') }}">Datos</a></li>
+                <li><a href="{{ url_for('quienes') }}">¿Quiénes somos?</a></li>
+                <li><a href="{{ url_for('agendar') }}">Citas</a></li>
+                <li><a href="{{ url_for('registro') }}" class="btn">Regístrate</a></li>
+                <li><a href="{{ url_for('perfil') }}" class="search-icon"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="banner">
+            <img src="{{ url_for('static', filename='imagenes/princ.jpg') }}" alt="Banner">
+        </section>
+
+        <section class="intro">
+            <div class="intro-text">
+                <h2>La Salud Materna</h2>
+                <p>Se refiere a la salud de las mujeres durante el embarazo, el parto y el puerperio. Cada una de estas etapas debería ser una experiencia positiva, que asegure el pleno potencial de salud y bienestar tanto para las mujeres como para sus bebés.</p>
+            </div>
+            <div class="intro-image">
+                <img src="{{ url_for('static', filename='imagenes/etapas.png') }}" alt="Etapas">
+            </div>
+        </section>
+
+        <section class="importance">
+            <h2>¿Por qué es importante?</h2>
+               <p>La salud materna no solo se trata de sobrevivir al embarazo y el parto, sino también de promover la salud y bienestar a largo plazo tanto para las madres como para sus hijos. Así mismo es fundamental que todas las mujeres tengan acceso a una atención de salud materna respetuosa y de alta calidad, superando las desigualdades que influyen en este campo. Además de los siguientes puntos:</p>
+            <div class="importance-content" id="importance-content">
+                <div id="infinite-scroll-trigger"></div>
+            </div>
+        </section>
+
+        <div id="images"
+            data-img1="{{ url_for('static', filename='imagenes/imp1.png') }}"
+            data-img2="{{ url_for('static', filename='imagenes/imp2.jfif') }}"
+            data-img3="{{ url_for('static', filename='imagenes/imp3.jfif') }}">
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

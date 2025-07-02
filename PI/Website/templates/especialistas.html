@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Especialistas</title>
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/espec.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='imagenes/Logo.png') }}" alt="Logo">
+        </div>
+        <nav>
+            <div class="menu-icon" id="menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul id="nav-menu">
+                <li><a href="{{ url_for('index') }}"><i class="fas fa-home"></i></a></li>
+                <li><a href="{{ url_for('consejos') }}">Consejos</a></li>
+                <li><a href="{{ url_for('datos') }}">Datos</a></li>
+                <li><a href="{{ url_for('quienes') }}">¿Quiénes somos?</a></li>
+                <li><a href="{{ url_for('agendar') }}">Citas</a></li>
+                <li><a href="{{ url_for('perfil') }}" class="search-icon"><i class="fas fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="specialists">
+            <h1>Nuestros especialistas</h1>
+            <p>La salud materna es un campo multidisciplinario que abarca diversas áreas de la medicina y la atención sanitaria. Es por ello que contamos con el contacto de profesionales altamente capacitados que se dedican a garantizar la salud y el bienestar de las mujeres durante el embarazo, el parto y el posparto. Te los presentamos:</p>
+            
+            <div class="specialist no-animation">
+                <img src="{{ url_for('static', filename='imagenes/drrodrigo.jfif') }}" alt="Dr. Rodrigo Betancourt" class="perfil-foto">
+                <div class="specialist-info">
+                    <h2>Dr. Rodrigo Betancourt</h2>
+                    <p>Especialista en Ginecología y Obstetricia</p>
+                    <p>Actualmente en: Hospital Santo Tomás</p>
+                    <p>Edad: 37 años</p>
+                    <p>Tiempo de experiencia: 4 años</p>
+                    <ul>
+                        <li>Atención prenatal y posnatal</li>
+                        <li>Cirugía ginecológica</li>
+                        <li>Diagnóstico y tratamiento de enfermedades ginecológicas</li>
+                        <li>Salud reproductiva y fertilidad</li>
+                    </ul>
+                    <a href="{{ url_for('contactar_doctor', doctor_id='rodrigo') }}"><button class="contact-button1">Contáctame</button></a>
+                </div>
+            </div>
+
+            <div class="specialist no-animation">
+                <img src="{{ url_for('static', filename='imagenes/draange.png') }}" alt="Dra. Angélica Resendiz" class="perfil-foto">
+                <div class="specialist-info">
+                    <h2>Dra. Angélica Resendiz</h2>
+                    <p>Especialista en Ginecología, Obstetricia y Perinatología</p>
+                    <p>Actualmente en: Hospital Los Angeles</p>
+                    <p>Edad: 39 años</p>
+                    <p>Tiempo de experiencia: 5 años</p>
+                    <ul>
+                        <li>Atención prenatal y posnatal</li>
+                        <li>Embarazos de alto riesgo</li>
+                        <li>Complicaciones fetales y maternas</li>
+                        <li>Diagnósticos y tratamientos para condiciones que pueden afectar el embarazo</li>
+                    </ul>
+                    <a href="{{ url_for('contactar_doctor', doctor_id='angelica') }}"><button class="contact-button1">Contáctame</button></a>
+                </div>
+            </div>
+
+            <div class="specialist no-animation">
+                <img src="{{ url_for('static', filename='imagenes/drdam.png') }}" alt="Dr. Damián Gutierrez" class="perfil-foto">
+                <div class="specialist-info">
+                    <h2>Dr. Damián Gutierrez</h2>
+                    <p>Especialista en Ginecología y Neonatología</p>
+                    <p>Actualmente en: Hospital del Niño y la Mujer en Qro</p>
+                    <p>Edad: 45 años</p>
+                    <p>Tiempo de experiencia: 20 años</p>
+                    <ul>
+                        <li>Atención prenatal y posnatal</li>
+                        <li>Cuidado de recién nacidos y prematuros o con problemas complejos</li>
+                        <li>Cuidados intensivos neonatales</li>
+                        <li>Diagnósticos y tratamientos para condiciones que pueden afectar el embarazo</li>
+                    </ul>
+                    <a href="{{ url_for('contactar_doctor', doctor_id='damian') }}"><button class="contact-button1">Contáctame</button></a>
+                </div>
+            </div>
+
+            <div class="specialist no-animation">
+                <img src="{{ url_for('static', filename='imagenes/drasusana.png') }}" alt="Dra. Susana Moscoso" class="perfil-foto">
+                <div class="specialist-info">
+                    <h2>Dra. Susana Moscoso</h2>
+                    <p>Especialista en Ginecología y Consultora de Lactancia</p>
+                    <p>Actualmente en: Hospital General de Qro</p>
+                    <p>Edad: 34 años</p>
+                    <p>Tiempo de experiencia: 3 años</p>
+                    <ul>
+                        <li>Atención ginecológica general</li>
+                        <li>Asesoría en lactancia materna</li>
+                        <li>Cuidado posparto</li>
+                        <li>Educación en salud reproductiva</li>
+                    </ul>
+                   <a href="{{ url_for('contactar_doctor', doctor_id='susana') }}"><button class="contact-button1">Contáctame</button></a>
+                </div>
+            </div>
+
+            <div id="infinite-scroll-trigger"></div>
+        </section>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

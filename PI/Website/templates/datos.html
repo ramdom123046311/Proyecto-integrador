@@ -4,25 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datos - Mortalidad Materna en México</title>
-    <link rel="stylesheet" href="dat.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dat.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
         <div class="data-header">
-            <img src="imagenes/Logo.png" alt="Salud Materna" class="logo">
+            <img src="{{ url_for('static', filename='imagenes/Logo.png') }}" alt="Salud Materna" class="logo">
         </div>
         <nav>
             <div class="menu-icon" id="menu-icon">
                 <i class="fas fa-bars"></i>
             </div>
             <ul id="nav-menu">
-                <li><a href="index.html"><i class="fas fa-home"></i></a></li>
-                <li><a href="especialistas.html">Especialistas</a></li>
-                <li><a href="consejos.html">Consejos</a></li>
-                <li><a href="quienes.html">¿Quiénes somos?</a></li>
-                <li><a href="agendar_citas.html">Citas</a></li>
-                <li><a href="perfil.html" class="search-icon"><i class="fas fa-user"></i></a></li>
+                <li><a href="{{ url_for('index') }}"><i class="fas fa-home"></i></a></li>
+                <li><a href="{{ url_for('especialistas') }}">Especialistas</a></li>
+                <li><a href="{{ url_for('consejos') }}">Consejos</a></li>
+                <li><a href="{{ url_for('quienes') }}">¿Quiénes somos?</a></li>
+                <li><a href="{{ url_for('agendar') }}">Citas</a></li>
+                <li><a href="{{ url_for('perfil') }}" class="search-icon"><i class="fas fa-user"></i></a></li>
             </ul>
         </nav>
     </header>
@@ -31,29 +31,26 @@
             <h1>Datos - Mortalidad Materna en México</h1>
             <div class="graph-container">
                 <p>La mortalidad materna en México sigue siendo una preocupación significativa en el ámbito de la salud pública. Según datos, el país ha hecho avances importantes en la reducción de la mortalidad materna en las últimas décadas, pero aún enfrenta desafíos para alcanzar los niveles deseados. En 2021, la razón de mortalidad materna (RMM) en México fue de aproximadamente 31.0 muertes por cada 100,000 nacidos vivos.</p>
-                <img src="imagenes/estad.png" alt="Gráfico de Mortalidad Materna" class="illustration">
+                <img src="{{ url_for('static', filename='imagenes/estad.png') }}" alt="Gráfico de Mortalidad Materna" class="illustration">
             </div>
             <p>Este indicador ha mostrado una tendencia a la baja desde principios del siglo XXI, cuando la RMM superaba las 60 muertes por cada 100,000 nacidos vivos. Sin embargo, persisten disparidades significativas entre diferentes regiones y grupos socioeconómicos del país.</p>
             <p>Los estados con las tasas más altas de mortalidad materna suelen ser aquellos con mayores índices de pobreza y menores niveles de desarrollo, como Guerrero, Oaxaca y Chiapas. En contraste, estados con mejor infraestructura de salud y mayor desarrollo socioeconómico, como la Ciudad de México, Nuevo León y Querétaro, presentan tasas significativamente más bajas.</p>
             <div class="highlight">
-                <img src="imagenes/dato.png" alt="Maternidad" class="highlight-img">
+                <img src="{{ url_for('static', filename='imagenes/dato.png') }}" alt="Maternidad" class="highlight-img">
                 <p>Las principales causas de mortalidad materna en México incluyen complicaciones hipertensivas del embarazo, hemorragias, infecciones y condiciones preexistentes agravadas por el embarazo. Estas causas son, en su mayoría, prevenibles con una atención médica adecuada y oportuna.</p>
             </div>
             <p>A pesar de los avances, la mortalidad materna en México requiere atención continua y esfuerzos sostenidos para garantizar que todas las mujeres, independientemente de su lugar de residencia o condición socioeconómica, tengan acceso a los cuidados necesarios para un embarazo y parto seguros.</p>
-        
         </section>
     </main>
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-    const menuIcon = document.getElementById('menu-icon');
-    const navMenu = document.getElementById('nav-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const navMenu = document.getElementById('nav-menu');
 
-    menuIcon.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
+        menuIcon.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
     });
-});
     </script>
 </body>
 </html>
-
-
