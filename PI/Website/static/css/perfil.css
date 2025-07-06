@@ -1,0 +1,468 @@
+/* Estilos generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.menu-icon {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #4a90e2;
+}
+
+#nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#nav-menu li {
+    margin-left: 1.5rem;
+}
+
+#nav-menu a {
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: 500;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+#nav-menu a:hover {
+    color: #4a90e2;
+}
+
+#nav-menu a i {
+    margin-right: 0.5rem;
+}
+
+/* Contenedor principal */
+.profile-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+/* Alertas */
+.alert {
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.alert i {
+    margin-right: 10px;
+}
+
+/* Encabezado del perfil */
+.profile-header {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #e9f2ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 2rem;
+    color: #4a90e2;
+    font-size: 5rem;
+}
+
+.profile-info h1 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.8rem;
+}
+
+.profile-info p {
+    margin: 0.5rem 0;
+    color: #7f8c8d;
+    display: flex;
+    align-items: center;
+}
+
+.profile-info p i {
+    margin-right: 0.5rem;
+    color: #4a90e2;
+}
+
+.btn-edit {
+    display: inline-flex;
+    align-items: center;
+    background-color: #4a90e2;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+
+.btn-edit:hover {
+    background-color: #3a7bc8;
+}
+
+.btn-edit i {
+    margin-right: 0.5rem;
+}
+
+/* Secciones del perfil */
+.profile-section {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+.profile-section h2 {
+    margin-top: 0;
+    color: #2c3e50;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.profile-section h2 i {
+    margin-right: 0.75rem;
+    color: #4a90e2;
+}
+
+/* Detalles del perfil */
+.profile-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.detail-item {
+    margin-bottom: 1rem;
+}
+
+.detail-label {
+    font-weight: 500;
+    color: #2c3e50;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.detail-value {
+    color: #7f8c8d;
+    display: block;
+    padding: 0.5rem;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+/* Lista de citas */
+.citas-list {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.cita-item {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cita-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cita-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.cita-header h3 {
+    margin: 0;
+    color: #2c3e50;
+}
+
+.cita-status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.cita-status.pendiente {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.cita-status.confirmada {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.cita-status.cancelada {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.cita-details p {
+    margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    color: #7f8c8d;
+}
+
+.cita-details i {
+    margin-right: 0.75rem;
+    color: #4a90e2;
+    min-width: 20px;
+}
+
+.cita-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.btn-cancel, .btn-reschedule {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.btn-cancel {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.btn-cancel:hover {
+    background-color: #f1b0b7;
+}
+
+.btn-reschedule {
+    background-color: #e2e3e5;
+    color: #383d41;
+    border: 1px solid #d6d8db;
+}
+
+.btn-reschedule:hover {
+    background-color: #d6d8db;
+}
+
+.btn-cancel i, .btn-reschedule i {
+    margin-right: 0.5rem;
+}
+
+.no-citas {
+    text-align: center;
+    padding: 2rem;
+    color: #7f8c8d;
+}
+
+.no-citas i {
+    font-size: 3rem;
+    color: #d6d8db;
+    margin-bottom: 1rem;
+}
+
+.no-citas p {
+    margin: 0.5rem 0 1.5rem;
+}
+
+.btn-new-appointment {
+    display: inline-flex;
+    align-items: center;
+    background-color: #4a90e2;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn-new-appointment:hover {
+    background-color: #3a7bc8;
+}
+
+.btn-new-appointment i {
+    margin-right: 0.5rem;
+}
+
+/* Historial médico */
+.medical-history {
+    border-left: 3px solid #4a90e2;
+    padding-left: 1.5rem;
+}
+
+.history-item {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.history-item:before {
+    content: "";
+    position: absolute;
+    left: -1.65rem;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #4a90e2;
+}
+
+.history-date {
+    font-weight: 500;
+    color: #4a90e2;
+    margin-bottom: 0.5rem;
+}
+
+.history-details {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.history-details h3 {
+    margin: 0 0 0.5rem;
+    color: #2c3e50;
+}
+
+.history-details p {
+    margin: 0;
+    color: #7f8c8d;
+}
+
+.no-history {
+    text-align: center;
+    padding: 2rem;
+    color: #7f8c8d;
+}
+
+.no-history i {
+    font-size: 3rem;
+    color: #d6d8db;
+    margin-bottom: 1rem;
+}
+
+.no-history p {
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    nav {
+        padding: 1rem;
+    }
+    
+    .menu-icon {
+        display: block;
+    }
+    
+    #nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        padding: 1rem;
+    }
+    
+    #nav-menu.active {
+        display: flex;
+    }
+    
+    #nav-menu li {
+        margin: 0;
+        padding: 0.5rem 0;
+        border-top: 1px solid #eee;
+    }
+    
+    .profile-container {
+        padding: 0 1rem;
+    }
+    
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+    }
+    
+    .profile-avatar {
+        margin-right: 0;
+        margin-bottom: 1.5rem;
+    }
+    
+    .profile-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .cita-actions {
+        flex-direction: column;
+    }
+    
+    .btn-cancel, .btn-reschedule {
+        width: 100%;
+        justify-content: center;
+    }
+}

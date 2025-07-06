@@ -3,82 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de Usuario</title>
-    <link rel="stylesheet" href="perf.css">
+    <title>Perfil de Usuario - Salud Materna</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/perfil.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
-        <div class="logo">
-            <img src="imagenes/Logo.png" alt="Salud Materna Juvenil">
-        </div>
         <nav>
             <div class="menu-icon" id="menu-icon">
                 <i class="fas fa-bars"></i>
             </div>
             <ul id="nav-menu">
-                <li><a href="index.html"><i class="fas fa-home"></i></a></li>
-                <li><a href="especialistas.html">Especialistas</a></li>
-                <li><a href="consejos.html">Consejos</a></li>
-                <li><a href="datos.html">Datos</a></li>
-                <li><a href="quienes.html">¿Quiénes somos?</a></li>
+                <li><a href="{{ url_for('index') }}"><i class="fas fa-home"></i> Inicio</a></li>
+                <li><a href="{{ url_for('especialistas') }}">Especialistas</a></li>
+                <li><a href="{{ url_for('consejos') }}">Consejos</a></li>
+                <li><a href="{{ url_for('datos') }}">Datos</a></li>
+                <li><a href="{{ url_for('quienes') }}">¿Quiénes somos?</a></li>
+                <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
             </ul>
         </nav>
     </header>
-    <section class="profile">
-        <div class="profile-header">
-            <img src="imagenes/emb.jfif" alt="Shantal Jimenez" class="profile-pic">
-            <div class="profile-info">
-                <h1>Shantal Jimenez</h1>
-                <p>Edad: 24 años</p>
-                <p>Tiempo de embarazo: 5 meses</p>
-                <button class="edit-profile"><i class="fas fa-pencil-alt"></i> Editar perfil</button>
-            </div>
-        </div>
-        <div class="personal-data">
-            <h2>Datos personales</h2>
-            <div class="data-grid">
-                <div>Apellido Paterno: <span>Jimenez</span></div>
-                <div>Apellido Materno: <span>Martínez</span></div>
-                <div>Nombre: <span>Shantal</span></div>
-                <div>Fecha de Nac: <span>14-Ene-2000</span></div>
-                <div>Edo. Nal: <span>Querétaro</span></div>
-                <div>Tipo de sangre: <span>O+</span></div>
-                <div>Correo: <span>shantal.jim@gmail.com</span></div>
-                <div>Tel. Celular: <span>55-8996-3524</span></div>
-            </div>
-        </div>
-        <div class="specialist-history">
-            <h2>Historial con especialistas</h2>
-            <div class="specialist">
-                <img src="imagenes/drrodrigo.jfif" alt="Dr. Rodrigo Betancourt" class="specialist-pic">
-                <div class="specialist-info">
-                    <h3>Dr. Rodrigo Betancourt</h3>
-                    <p>Observaciones:</p>
-                    <p>Su presión arterial, nivel de glucosa y hemoglobina están dentro de los rangos normales, lo que es esencial para un embarazo saludable. Sin embargo, se recomienda el seguimiento de una dieta equilibrada y rica en nutrientes.</p>
-                </div>
-            </div>
-            <div class="specialist">
-                <img src="imagenes/drasusana.png" alt="Dra. Susana Moscoso" class="specialist-pic">
-                <div class="specialist-info">
-                    <h3>Dra. Susana Moscoso</h3>
-                    <p>Observaciones:</p>
-                    <p>Su embarazo avanza favorablemente según los últimos análisis. Su presión arterial y niveles de glucosa se encuentran dentro de los parámetros normales, lo cual es fundamental para el bienestar tanto suyo como del bebé.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-    const menuIcon = document.getElementById('menu-icon');
-    const navMenu = document.getElementById('nav-menu');
 
-    menuIcon.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    });
-});
+    <div class="profile-container">
+        <!-- Mensajes flash -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        <i class="fas fa-{% if category == 'success' %}check-circle{% else %}exclamation-circle{% endif %}"></i>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="profile-info">
+                <h1>{{ usuario.nombre if usuario else 'Usuario' }}</h1>
+                <p><i class="fas fa-envelope"></i> {{ usuario.email if usuario else 'email@ejemplo.com' }}</p>
+                <p><i class="fas fa-phone"></i> {{ usuario.telefono if usuario and usuario.telefono else 'No proporcionado' }}</p>
+                <a href="{{ url_for('perfil_editar') }}" class="btn-edit">
+                    <i class="fas fa-pencil-alt"></i> Editar perfil
+                </a>
+            </div>
+        </div>
+
+        <div class="profile-section">
+            <h2><i class="fas fa-id-card"></i> Información Personal</h2>
+            <div class="profile-details">
+                <div class="detail-item">
+                    <span class="detail-label">Nombre completo:</span>
+                    <span class="detail-value">{{ usuario.nombre if usuario else 'No proporcionado' }}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Correo electrónico:</span>
+                    <span class="detail-value">{{ usuario.email if usuario else 'No proporcionado' }}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Teléfono:</span>
+                    <span class="detail-value">{{ usuario.telefono if usuario and usuario.telefono else 'No proporcionado' }}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Dirección:</span>
+                    <span class="detail-value">{{ usuario.direccion if usuario and usuario.direccion else 'No proporcionada' }}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Fecha de nacimiento:</span>
+                    <span class="detail-value">
+                        {% if usuario and usuario.fecha_nacimiento %}
+                            {{ usuario.fecha_nacimiento.strftime('%d-%b-%Y') }}
+                        {% else %}
+                            No proporcionada
+                        {% endif %}
+                    </span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Fecha de registro:</span>
+                    <span class="detail-value">
+                        {% if usuario and usuario.fecha_registro %}
+                            {{ usuario.fecha_registro.strftime('%d-%b-%Y') }}
+                        {% else %}
+                            No disponible
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-section">
+            <h2><i class="fas fa-calendar-check"></i> Próximas Citas</h2>
+            {% if citas and citas|length > 0 %}
+                <div class="citas-list">
+                    {% for cita in citas %}
+                    <div class="cita-item">
+                        <div class="cita-header">
+                            <h3>{{ cita.nombre_doctor }}</h3>
+                            <span class="cita-status {{ cita.estado }}">{{ cita.estado|capitalize }}</span>
+                        </div>
+                        <div class="cita-details">
+                            <p><i class="fas fa-calendar-day"></i> {{ cita.fecha.strftime('%A, %d de %B de %Y') }}</p>
+                            <p><i class="fas fa-clock"></i> {{ cita.hora.strftime('%I:%M %p') }}</p>
+                            <p><i class="fas fa-map-marker-alt"></i> {{ 'Presencial' if cita.modalidad == 'presencial' else 'En línea' }}</p>
+                            {% if cita.sintomas %}
+                            <p><i class="fas fa-comment-medical"></i> {{ cita.sintomas }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="cita-actions">
+                            <a href="{{ url_for('cancelar_cita', id_cita=cita.id_cita) }}" class="btn-cancel">
+                                <i class="fas fa-times"></i> Cancelar
+                            </a>
+                            <a href="{{ url_for('reagendar_cita', id_cita=cita.id_cita) }}" class="btn-reschedule">
+                                <i class="fas fa-calendar-alt"></i> Reagendar
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="no-citas">
+                    <i class="fas fa-calendar-times"></i>
+                    <p>No tienes citas programadas</p>
+                    <a href="{{ url_for('agendar') }}" class="btn-new-appointment">
+                        <i class="fas fa-plus"></i> Agendar nueva cita
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="profile-section">
+            <h2><i class="fas fa-history"></i> Historial Médico</h2>
+            <div class="medical-history">
+                {% if citas_pasadas and citas_pasadas|length > 0 %}
+                    {% for cita in citas_pasadas %}
+                    <div class="history-item">
+                        <div class="history-date">
+                            {{ cita.fecha.strftime('%d/%m/%Y') }}
+                        </div>
+                        <div class="history-details">
+                            <h3>{{ cita.nombre_doctor }}</h3>
+                            <p>{{ cita.observaciones if cita.observaciones else 'No hay observaciones registradas' }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="no-history">
+                        <i class="fas fa-file-medical-alt"></i>
+                        <p>No hay historial médico registrado</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuIcon = document.getElementById('menu-icon');
+            const navMenu = document.getElementById('nav-menu');
+
+            menuIcon.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+
+            // Confirmación para cancelar citas
+            const cancelButtons = document.querySelectorAll('.btn-cancel');
+            cancelButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    if (!confirm('¿Estás seguro que deseas cancelar esta cita?')) {
+                        e.preventDefault();
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
-
-

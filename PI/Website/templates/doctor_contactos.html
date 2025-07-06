@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Contactos</title>
+    <style>
+        .contacto-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+        .contacto-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .fecha {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mensajes Recibidos</h1>
+    
+    {% if contactos %}
+        {% for contacto in contactos %}
+        <div class="contacto-card">
+            <div class="contacto-header">
+                <h3>{{ contacto.nombre }} {{ contacto.apellido }}</h3>
+                <span class="fecha">{{ contacto.fecha_contacto.strftime('%d/%m/%Y %H:%M') }}</span>
+            </div>
+            <p><strong>Email:</strong> {{ contacto.email }}</p>
+            <p><strong>Síntomas/comentarios:</strong></p>
+            <p>{{ contacto.sintomas }}</p>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No tienes mensajes recibidos.</p>
+    {% endif %}
+</body>
+</html>

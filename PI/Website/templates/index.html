@@ -4,8 +4,185 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salud Materna</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fffdfd;
+            color: #333;
+        }
+
+        
+        header {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f0f0f0;
+            flex-wrap: wrap;
+        }
+        .logo img {
+            height: 60px;
+        }
+        nav {
+            flex-grow: 1;
+        }
+        #nav-menu {
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        #nav-menu li a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        #nav-menu li a:hover {
+            color: #000000;
+        }
+
+        .btn {
+            background-color: #ffffff;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 6px;
+        }
+
+        .btn:hover {
+            background-color: #c2185b;
+        }
+
+        .search-icon i {
+            font-size: 1.2rem;
+            color: #e91e63;
+        }
+
+        /* BANNER */
+        .banner img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        .intro,
+        .importance {
+            background-color: #ffffff;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .intro h2,
+        .importance h2 {
+            color: #e91e63;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .intro-text p,
+        .importance p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .intro {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .intro-text {
+            flex: 1 1 60%;
+        }
+
+        .intro-image {
+            flex: 1 1 35%;
+        }
+
+        .intro-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+                color: #000000;
+                margin-right: 10px;
+            }
+
+            #nav-menu {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                background-color: #ffffff;
+                position: absolute;
+                top: 80px;
+                right: 0;
+                width: 100%;
+                padding: 15px 0;
+                z-index: 1000;
+            }
+
+            #nav-menu.show {
+                display: flex;
+            }
+
+            #nav-menu li {
+                margin: 10px 0;
+            }
+
+            .intro {
+                flex-direction: column;
+            }
+
+            .intro-text, .intro-image {
+                flex: 1 1 100%;
+            }
+        }
+
+        footer {
+            background-color: #fce4ec;
+            color: #e91e63;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -13,15 +190,13 @@
             <img src="{{ url_for('static', filename='imagenes/Logo.png') }}" alt="Logo">
         </div>
         <nav>
-            <div class="menu-icon" id="menu-icon">
-                <i class="fas fa-bars"></i>
-            </div>
+            <div class="menu-icon" id="menu-icon">&#9776;</div>
             <ul id="nav-menu">
                 <li><a href="{{ url_for('especialistas') }}">Especialistas</a></li>
                 <li><a href="{{ url_for('consejos') }}">Consejos</a></li>
                 <li><a href="{{ url_for('datos') }}">Datos</a></li>
                 <li><a href="{{ url_for('quienes') }}">¿Quiénes somos?</a></li>
-                <li><a href="{{ url_for('agendar') }}">Citas</a></li>
+                <li><a href="{{ url_for('citas') }}">Citas</a></li>
                 <li><a href="{{ url_for('registro') }}" class="btn">Regístrate</a></li>
                 <li><a href="{{ url_for('perfil') }}" class="search-icon"><i class="fas fa-user"></i></a></li>
             </ul>
@@ -30,7 +205,7 @@
 
     <main>
         <section class="banner">
-            <img src="{{ url_for('static', filename='imagenes/princ.jpg') }}" alt="Banner">
+            <img src="{{ url_for('static', filename='imagenes/princ.jpg') }}" alt="Banner principal">
         </section>
 
         <section class="intro">
@@ -39,25 +214,27 @@
                 <p>Se refiere a la salud de las mujeres durante el embarazo, el parto y el puerperio. Cada una de estas etapas debería ser una experiencia positiva, que asegure el pleno potencial de salud y bienestar tanto para las mujeres como para sus bebés.</p>
             </div>
             <div class="intro-image">
-                <img src="{{ url_for('static', filename='imagenes/etapas.png') }}" alt="Etapas">
+                <img src="{{ url_for('static', filename='imagenes/etapas.png') }}" alt="Etapas del embarazo">
             </div>
         </section>
 
         <section class="importance">
             <h2>¿Por qué es importante?</h2>
-               <p>La salud materna no solo se trata de sobrevivir al embarazo y el parto, sino también de promover la salud y bienestar a largo plazo tanto para las madres como para sus hijos. Así mismo es fundamental que todas las mujeres tengan acceso a una atención de salud materna respetuosa y de alta calidad, superando las desigualdades que influyen en este campo. Además de los siguientes puntos:</p>
-            <div class="importance-content" id="importance-content">
-                <div id="infinite-scroll-trigger"></div>
-            </div>
+            <p>La salud materna no solo se trata de sobrevivir al embarazo y el parto, sino también de promover la salud y bienestar a largo plazo tanto para las madres como para sus hijos. Así mismo es fundamental que todas las mujeres tengan acceso a una atención de salud materna respetuosa y de alta calidad, superando las desigualdades que influyen en este campo. Además de los siguientes puntos:</p>
         </section>
-
-        <div id="images"
-            data-img1="{{ url_for('static', filename='imagenes/imp1.png') }}"
-            data-img2="{{ url_for('static', filename='imagenes/imp2.jfif') }}"
-            data-img3="{{ url_for('static', filename='imagenes/imp3.jfif') }}">
-        </div>
     </main>
 
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <footer>
+        <p>© 2025 Salud Materna — Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        const menuIcon = document.getElementById('menu-icon');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuIcon.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+    </script>
 </body>
 </html>

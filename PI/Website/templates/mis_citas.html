@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mis Citas - Salud Materna</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <div class="contenedor">
+        <h2>Mis Citas</h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        {% if citas %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Doctor</th>
+                        <th>Especialidad</th>
+                        <th>Modalidad</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cita in citas %}
+                        <tr>
+                            <td>{{ cita.fecha }}</td>
+                            <td>{{ cita.hora }}</td>
+                            <td>{{ cita.doctor_nombre }}</td>
+                            <td>{{ cita.especialidad }}</td>
+                            <td>{{ cita.modalidad }}</td>
+                            <td>{{ cita.estado }}</td>
+                            <td>
+                                {% if cita.estado != 'cancelada' %}
+                                    <a href="{{ url_for('cancelar_cita', id_cita=cita.id_cita) }}">Cancelar</a>
+                                {% else %}
+                                    <span class="texto-cancelado">Cancelada</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No tienes citas agendadas.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

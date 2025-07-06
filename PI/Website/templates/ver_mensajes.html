@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensajes a Doctores</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #6a1b9a;
+            text-align: center;
+        }
+        .mensaje {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: #f9f9f9;
+        }
+        .mensaje-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .doctor-info {
+            font-weight: bold;
+            color: #6a1b9a;
+        }
+        .fecha {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .paciente-info {
+            margin-bottom: 10px;
+        }
+        .sintomas {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 4px;
+            border-left: 3px solid #6a1b9a;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mensajes Enviados a Doctores</h1>
+    
+    {% if mensajes %}
+        {% for mensaje in mensajes %}
+        <div class="mensaje">
+            <div class="mensaje-header">
+                <span class="doctor-info">{{ mensaje.doctor_nombre }} ({{ mensaje.especialidad }})</span>
+                <span class="fecha">{{ mensaje.fecha_contacto.strftime('%d/%m/%Y %H:%M') }}</span>
+            </div>
+            
+            <div class="paciente-info">
+                <p><strong>Paciente:</strong> {{ mensaje.nombre }} {{ mensaje.apellido }}</p>
+                <p><strong>Email:</strong> {{ mensaje.email }}</p>
+            </div>
+            
+            <div class="sintomas">
+                <p><strong>Síntomas/comentarios:</strong></p>
+                <p>{{ mensaje.sintomas }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No hay mensajes registrados.</p>
+    {% endif %}
+</body>
+</html>
